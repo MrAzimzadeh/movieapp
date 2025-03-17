@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
+import 'package:movieapp/utils/app_btn.dart';
+import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_form_field.dart';
 import 'package:movieapp/utils/app_txt.dart';
@@ -14,9 +17,8 @@ class SignUpScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(
             top: 162,
-            left: 134.5,
+            left: 80,
             bottom: 150,
-            right: 134.5,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -30,6 +32,9 @@ class SignUpScreen extends StatelessWidget {
                   color: AppColors.textColor,
                 ),
               ),
+              SizedBox.fromSize(
+                size: Size(0, 50),
+              ),
               Column(
                 children: [
                   SignupFormField(
@@ -40,8 +45,106 @@ class SignUpScreen extends StatelessWidget {
                       color: AppColors.emailText,
                     ),
                   ),
+                  SizedBox.fromSize(
+                    size: Size(0, 20),
+                  ),
+                  SignupField(
+                    hintText: 'Username',
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: AppColors.usernameField,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Inactive',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox.fromSize(
+                    size: Size(0, 20),
+                  ),
+                  SignupField(
+                    hintText: 'Password',
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: AppColors.usernameText,
+                    ),
+                    sufficIcon: Icon(
+                      Icons.visibility,
+                      color: AppColors.usernameText,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Inactive',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
+              SizedBox.fromSize(
+                size: Size(0, 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 8, right: 24, bottom: 8, left: 24),
+                child: AppButton(
+                  text: AppTxt.signupBtn,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => OnboardingScreen(),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox.fromSize(size: Size(0,20),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Don’t have an account ?',
+                          style: GoogleFonts.inter(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textColor,
+                          ),),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OnboardingScreen(),
+                                ),
+                              );
+                            },
+                            child: Text('Login', 
+                            style: GoogleFonts.inter(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.loginBtn,
+                            )
+                          ),
+                          ),
+                        ],
+                      ),
               // TextField(
               //   decoration: const InputDecoration(
               //     labelText: 'Email',

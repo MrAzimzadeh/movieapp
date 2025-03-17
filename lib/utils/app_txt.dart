@@ -6,4 +6,7 @@ class AppTxt {
   static const String onboardingBtn = 'Login';
   static const String onboardingSignUp = 'Sign Up';
   static const String signupTitle = 'Sign Up';
+  static const String signupBtn = 'Create Account';
+  // static  const String signupName = 'Username';
+  // static const String signupPassword = 'Password';
 }

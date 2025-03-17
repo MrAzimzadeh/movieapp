@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
 
-class SignupFormField extends StatelessWidget {
-  const SignupFormField({
+class SignupField extends StatelessWidget {
+  const SignupField({
     super.key,
     this.prefixIcon,
+    this.sufficIcon,
     required this.hintText,
-    this.labelText,
   });
 
   final Widget? prefixIcon;
   final String hintText;
-  final String? labelText;
+  final Widget? sufficIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,35 +21,34 @@ class SignupFormField extends StatelessWidget {
       height: 52,
       child: TextFormField(
         decoration: InputDecoration(
-          labelText: labelText,
           labelStyle: GoogleFonts.roboto(
-            color: AppColors.textfieldSide,
+            color: AppColors.usernameField,
             fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: hintText,
           hintStyle: GoogleFonts.roboto(
-            color: AppColors.emailText,
+            color: AppColors.textColor,
             fontSize: 16,
             fontWeight: FontWeight.w400,
           ),
           prefixIcon: prefixIcon,
+          suffixIcon: sufficIcon,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(  1), 
             borderSide: const BorderSide(
-              color: AppColors.textfieldSide,
+              color: AppColors.usernameField,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(1),
             borderSide: const BorderSide(
-              color: AppColors.textfieldSide,
+              color: AppColors.usernameField,
             ),
           ),
         ),
         style: GoogleFonts.roboto(
-          color: AppColors.emailText,
+          color: AppColors.textColor,
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
