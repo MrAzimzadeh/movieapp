@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviepp/screen/onboarding/onboarding_screen.dart';
+import 'package:moviepp/screens/onboarding_screen.dart';
 import 'package:moviepp/utils/app_txt.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,9 +8,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: AppTxt.appName,
-      darkTheme: ThemeData(),
+      debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
       home: OnboardingScreen(),
     );
