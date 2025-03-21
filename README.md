@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # movieapp
+=======
+# moviepp
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
 
 A new Flutter project.
 
@@ -14,3 +18,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+<<<<<<< HEAD
+=======
+# movieapp
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0

@@ -89,6 +89,7 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
+<<<<<<< HEAD
             VALUE "CompanyName", "com.gulara" "\0"
             VALUE "FileDescription", "movieapp" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
@@ -96,6 +97,15 @@ BEGIN
             VALUE "LegalCopyright", "Copyright (C) 2025 com.gulara. All rights reserved." "\0"
             VALUE "OriginalFilename", "movieapp.exe" "\0"
             VALUE "ProductName", "movieapp" "\0"
+=======
+            VALUE "CompanyName", "com.azimzada" "\0"
+            VALUE "FileDescription", "moviepp" "\0"
+            VALUE "FileVersion", VERSION_AS_STRING "\0"
+            VALUE "InternalName", "moviepp" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.azimzada. All rights reserved." "\0"
+            VALUE "OriginalFilename", "moviepp.exe" "\0"
+            VALUE "ProductName", "moviepp" "\0"
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

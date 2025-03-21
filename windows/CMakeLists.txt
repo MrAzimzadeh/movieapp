@@ -1,10 +1,18 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
+<<<<<<< HEAD
 project(movieapp LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
 set(BINARY_NAME "movieapp")
+=======
+project(moviepp LANGUAGES CXX)
+
+# The name of the executable created for the application. Change this to change
+# the on-disk name of your application.
+set(BINARY_NAME "moviepp")
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

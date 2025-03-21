@@ -5,6 +5,7 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
+<<<<<<< HEAD
 PRODUCT_NAME = movieapp
 
 // The application's bundle identifier
@@ -12,3 +13,12 @@ PRODUCT_BUNDLE_IDENTIFIER = com.gulara.movieapp
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2025 com.gulara. All rights reserved.
+=======
+PRODUCT_NAME = moviepp
+
+// The application's bundle identifier
+PRODUCT_BUNDLE_IDENTIFIER = com.azimzada.moviepp
+
+// The copyright displayed in application information
+PRODUCT_COPYRIGHT = Copyright © 2025 com.azimzada. All rights reserved.
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0

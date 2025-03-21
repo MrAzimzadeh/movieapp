@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "movieapp",
     "short_name": "movieapp",
+=======
+    "name": "moviepp",
+    "short_name": "moviepp",
+>>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
