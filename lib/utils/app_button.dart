@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
 
 class AppButton extends StatelessWidget {
-  AppButton({super.key, required this.text, this.onPressed});
-  void Function()? onPressed;
-  String text;
-  
+  const AppButton({super.key, required this.text, this.onPressed});
+  final void Function()? onPressed;
+  final String text;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

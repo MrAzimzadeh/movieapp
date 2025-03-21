@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:moviepp/screen/onboarding/onboarding_screen.dart';
-import 'package:moviepp/utils/app_txt.dart';
+import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
+import 'package:movieapp/utils/app_txt.dart';
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

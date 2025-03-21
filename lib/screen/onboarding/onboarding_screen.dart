@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
 import 'package:movieapp/screen/signup/signup_screen.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_dimens.dart';
 import 'package:movieapp/utils/app_images.dart';
 import 'package:movieapp/utils/app_txt.dart';
 import 'package:movieapp/utils/signup_button.dart';
-=======
-import 'package:moviepp/utils/app_colors.dart';
-import 'package:moviepp/utils/app_dimens.dart';
-import 'package:moviepp/utils/app_images.dart';
-import 'package:moviepp/utils/app_txt.dart';
->>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -49,10 +42,6 @@ class OnboardingScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-<<<<<<< HEAD
-=======
-                    
->>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
                     AppTxt.onboardingTitle,
                     style: GoogleFonts.inter(
                       color: AppColors.textColor,
@@ -60,7 +49,6 @@ class OnboardingScreen extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
-<<<<<<< HEAD
                   // SizedBox.fromSize(size: const Size(0, 10)),
                   Text(
                     AppTxt.onboardingDesc,
@@ -100,8 +88,6 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-=======
->>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
                 ],
               ),
             ),
@@ -115,11 +101,7 @@ class OnboardingScreen extends StatelessWidget {
 
   Widget _buildBgImage(Size size) {
     return Image.asset(
-<<<<<<< HEAD
       AppImages.onboarding,
-=======
-      AppImages.onboardingBg,
->>>>>>> 094d87a77cd6cb9936b20aea503b2a4fcb37b9d0
       fit: BoxFit.cover,
       width: size.width,
     );

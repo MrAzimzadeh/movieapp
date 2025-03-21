@@ -3,10 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
 
 class SignupButton extends StatelessWidget {
-  SignupButton({super.key, required this.text, this.onPressed, this.color});
-  void Function()? onPressed;
-  String text;
-  Color? color;
+  const SignupButton(
+      {super.key, required this.text, this.onPressed, this.color});
+  final void Function()? onPressed;
+  final String text;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {

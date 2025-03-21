@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
@@ -28,7 +29,9 @@ class _SignupFormFieldState extends State<SignupFormField> {
   void initState() {
     super.initState();
     myFocusNode.addListener(() {
-      print('Has focus: ${myFocusNode.hasFocus}');
+      if (kDebugMode) {
+        print('Has focus: ${myFocusNode.hasFocus}');
+      }
       setState(() {
         hasFocus = myFocusNode.hasFocus;
       });
