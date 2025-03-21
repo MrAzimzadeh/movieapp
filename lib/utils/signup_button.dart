@@ -3,9 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
 
 class SignupButton extends StatelessWidget {
-  SignupButton({super.key, required this.text, this.onPressed});
+  SignupButton({super.key, required this.text, this.onPressed, this.color});
   void Function()? onPressed;
   String text;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +21,10 @@ class SignupButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
           ),
         ),
-        child: 
-         Text(
-          'Sign Up',
+        child: Text(
+          text,
           style: GoogleFonts.inter(
-            color: AppColors.signUpBtnText,
+            color: color ?? AppColors.signUpBtnText,
             fontSize: 14,
             fontWeight: FontWeight.w700,
           ),

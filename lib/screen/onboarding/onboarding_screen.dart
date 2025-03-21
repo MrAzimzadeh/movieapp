@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/screen/signup/signup_screen.dart';
-import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_dimens.dart';
 import 'package:movieapp/utils/app_images.dart';
@@ -62,9 +61,11 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   // SizedBox.fromSize(size: const Size(0, 20)),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8, right: 24, bottom: 8, left: 24),
-                    child: AppButton(
+                    padding: const EdgeInsets.only(
+                        top: 8, right: 24, bottom: 8, left: 24),
+                    child: SignupButton(
                       text: AppTxt.onboardingBtn,
+                      color: Colors.red,
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -75,7 +76,8 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   // SizedBox.fromSize(size: const Size(0, 10)),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8, right: 24, bottom: 8, left: 24),
+                    padding: const EdgeInsets.only(
+                        top: 8, right: 24, bottom: 8, left: 24),
                     child: SignupButton(
                       text: AppTxt.onboardingSignUp,
                       onPressed: () => Navigator.push(

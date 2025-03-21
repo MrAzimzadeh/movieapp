@@ -15,21 +15,21 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 162,
-            left: 80,
-            bottom: 150,
-          ),
+          padding: const EdgeInsets.only(left: 18, right: 18),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                AppTxt.signupTitle,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.inter(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textColor,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  AppTxt.signupTitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textColor,
+                  ),
                 ),
               ),
               SizedBox.fromSize(
@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox.fromSize(
                     size: Size(0, 20),
                   ),
-                  SignupField(
+                  SignupFormField(
                     hintText: 'Username',
                     prefixIcon: Icon(
                       Icons.person,
@@ -58,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(0.0),
                       child: Text(
                         'Inactive',
                         style: GoogleFonts.roboto(
@@ -72,13 +72,13 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox.fromSize(
                     size: Size(0, 20),
                   ),
-                  SignupField(
+                  SignupFormField(
                     hintText: 'Password',
                     prefixIcon: Icon(
                       Icons.lock,
                       color: AppColors.usernameText,
                     ),
-                    sufficIcon: Icon(
+                    suffixIcon: Icon(
                       Icons.visibility,
                       color: AppColors.usernameText,
                     ),
@@ -115,36 +115,39 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox.fromSize(size: Size(0,20),),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('Don’t have an account ?',
-                          style: GoogleFonts.inter(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.textColor,
-                          ),),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => OnboardingScreen(),
-                                ),
-                              );
-                            },
-                            child: Text('Login', 
-                            style: GoogleFonts.inter(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.loginBtn,
-                            )
-                          ),
-                          ),
-                        ],
-                      ),
+              SizedBox.fromSize(
+                size: Size(0, 20),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don’t have an account ?',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OnboardingScreen(),
+                        ),
+                      );
+                    },
+                    child: Text('Login',
+                        style: GoogleFonts.inter(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.loginBtn,
+                        )),
+                  ),
+                ],
+              ),
               // TextField(
               //   decoration: const InputDecoration(
               //     labelText: 'Email',
