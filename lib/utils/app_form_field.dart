@@ -66,7 +66,7 @@ class _SignupFormFieldState extends State<SignupFormField> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(1),
             borderSide: const BorderSide(
-              color: AppColors.loginBtn,
+              color: AppColors.inputField,
             ),
           ),
           focusedBorder: OutlineInputBorder(

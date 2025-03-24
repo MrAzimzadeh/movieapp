@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movieapp/pages/home_pages.dart';
 import 'package:movieapp/screen/signup/signup_screen.dart';
+import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_dimens.dart';
 import 'package:movieapp/utils/app_images.dart';
@@ -63,13 +65,12 @@ class OnboardingScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(
                         top: 8, right: 24, bottom: 8, left: 24),
-                    child: SignupButton(
+                    child: AppButton(
                       text: AppTxt.onboardingBtn,
-                      color: Colors.red,
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => OnboardingScreen(),
+                          builder: (context) => HomePages(),
                         ),
                       ),
                     ),

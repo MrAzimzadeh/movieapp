@@ -11,7 +11,7 @@ class AppColors {
   static const Color emailText = Color.fromRGBO(50, 168, 115, 1);
   static const Color textfieldSide = Color.fromRGBO(50, 168, 115, 1);
   static const Color usernameText = Color.fromRGBO(243, 243, 243, 1);
-  static const Color usernameTextField = Color.fromRGBO(243, 243, 243, 1);
+  static const Color inputField = Color.fromRGBO(243, 243, 243, 1);
   static const Color passwordText = Color.fromRGBO(243, 243, 243, 1);
   static const Color passwordTextField = Color.fromRGBO(243, 243, 243, 1);
   static const Color usernameField = Color.fromRGBO(243, 243, 243, 1);
