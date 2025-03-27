@@ -7,5 +7,8 @@ class AppImages {
   static const String movie1 = 'assets/images/theglory_movie.png';
   static const String movie2 = 'assets/images/Oppenheimer_movie.png';
   static const String movie3 = 'assets/images/thorloveandthunder_movie.png';
+  static const String moviePoster = 'assets/images/warriors_movie.png';
+  static const String profileImg ='assets/images/profile_img.png';
+  static const String posterBg = 'assets/images/theglory_moviebg.png';
 }
  

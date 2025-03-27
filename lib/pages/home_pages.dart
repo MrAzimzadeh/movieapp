@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/utils/app_colors.dart';
-import 'package:movieapp/utils/app_dimens.dart';
 import 'package:movieapp/utils/app_images.dart';
 import 'package:movieapp/utils/app_txt.dart';
 
@@ -23,15 +22,12 @@ class HomePages extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildHomeImage(size),
-            Container(
+            Padding(
               padding: const EdgeInsets.only(
                 top: 29,
                 left: 19,
                 right: 19,
-                bottom: 59,
               ),
-              width: size.width,
-              height: AppDimens.homePageHeight,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

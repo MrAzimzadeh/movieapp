@@ -17,4 +17,9 @@ class AppColors {
   static const Color usernameField = Color.fromRGBO(243, 243, 243, 1);
   static const Color passwordField = Color.fromRGBO(243, 243, 243, 1);
   static const Color loginBtn = Color.fromRGBO(149, 172, 255, 1);
+  static const Color searchColor = Color.fromRGBO(50, 168, 115, 1);
+  static const Color searchBarBg = Color.fromRGBO(43, 41, 48, 1);
+  static const Color movieText = Color.fromRGBO(150, 150, 150, 1);
+  static const Color downloadColor = Color.fromRGBO(123, 187, 113, 1);
+  static const Color downloadBackground = Color.fromRGBO(234, 255, 231, 1);
 } 

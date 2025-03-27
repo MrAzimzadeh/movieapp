@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movieapp/pages/home_pages.dart';
+import 'package:movieapp/pages/favorites_page.dart';
+import 'package:movieapp/pages/search_page.dart';
+// import 'package:movieapp/pages/home_pages.dart';
+// import 'package:movieapp/pages/search_page.dart';
 import 'package:movieapp/screen/signup/signup_screen.dart';
 import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
@@ -70,7 +73,7 @@ class OnboardingScreen extends StatelessWidget {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePages(),
+                          builder: (context) => SearchPage(),
                         ),
                       ),
                     ),
