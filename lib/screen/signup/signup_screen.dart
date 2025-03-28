@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movieapp/screen/login/login_screen.dart';
 import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
 import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
@@ -109,7 +110,7 @@ class SignUpScreen extends StatelessWidget {
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => OnboardingScreen(),
+                      builder: (context) => LoginScreen(),
                     ),
                   ),
                 ),
