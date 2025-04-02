@@ -5,6 +5,7 @@ class AppTxt {
   static const String onboardingDesc = 'Explore a vast collection of blockbuster movies, timeless classics, and the latest releases.';
   static const String onboardingBtn = 'Login';
   static const String onboardingSignUp = 'Sign Up';
+  static const String loginTitle = 'Login';
   static const String signupTitle = 'Sign Up';
   static const String signupBtn = 'Create Account';
   static const String movieTitle = 'Popular Movie';

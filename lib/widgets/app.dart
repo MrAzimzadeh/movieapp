@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Movie App',
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
-      home: const  OnboardingScreen(),
+      home: OnboardingScreen(),
     );
   }
 }

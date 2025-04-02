@@ -1,3 +1,4 @@
+/// Dimens => Size 
 class AppDimens {
   AppDimens._();
   static const double onboardingHeight = 297;

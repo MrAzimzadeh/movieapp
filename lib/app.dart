@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
+import 'package:movieapp/ui/main_wrapper.dart';
 import 'package:movieapp/utils/app_txt.dart';
 
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: AppTxt.appName,
       darkTheme: ThemeData(),
       themeMode: ThemeMode.dark,
-      home: OnboardingScreen(),
+      home: MainWrapper(),
     );
   }
 }

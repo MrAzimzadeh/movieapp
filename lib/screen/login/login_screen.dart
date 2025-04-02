@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movieapp/screen/login/login_screen.dart';
 import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
+import 'package:movieapp/screen/signup/signup_screen.dart';
 import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_form_field.dart';
 import 'package:movieapp/utils/app_txt.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  AppTxt.signupTitle,
+                  AppTxt.loginTitle,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inter(
                     fontSize: 24,
@@ -43,30 +43,6 @@ class SignUpScreen extends StatelessWidget {
                     prefixIcon: Icon(
                       Icons.mail,
                       color: AppColors.emailText,
-                    ),
-                  ),
-                  SizedBox.fromSize(
-                    size: Size(0, 20),
-                  ),
-                  SignupFormField(
-                    hintText: 'Username',
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: AppColors.usernameField,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Text(
-                        'Inactive',
-                        style: GoogleFonts.roboto(
-                          color: AppColors.textColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
                     ),
                   ),
                   SizedBox.fromSize(
@@ -110,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
+                      builder: (context) => OnboardingScreen(),
                     ),
                   ),
                 ),
@@ -123,7 +99,7 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Don’t have an account ?',
+                    'Haven’t made an account?',
                     style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
@@ -135,11 +111,11 @@ class SignUpScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => SignUpScreen(),
                         ),
                       );
                     },
-                    child: Text('Login',
+                    child: Text('Sign Up',
                         style: GoogleFonts.inter(
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
@@ -148,26 +124,10 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              // TextField(
-              //   decoration: const InputDecoration(
-              //     labelText: 'Email',
-              //   ),
-              // ),
-              // const SizedBox(height: 20),
-              // TextField(
-              //   decoration: const InputDecoration(
-              //     labelText: 'Password',
-              //   ),
-              // ),
-              // const SizedBox(height: 20),
-              // ElevatedButton(
-              //   onPressed: () {},
-              //   child: const Text('Sign Up'),
-              // ),
             ],
           ),
         ),
       ),
     );
   }
-}
+}  
