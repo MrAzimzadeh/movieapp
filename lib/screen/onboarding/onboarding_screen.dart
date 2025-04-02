@@ -32,7 +32,6 @@ class OnboardingScreen extends StatelessWidget {
                 top: 29,
                 left: 19,
                 right: 19,
-                bottom: 59,
               ),
               width: size.width,
               height: AppDimens.onboardingHeight,
@@ -84,7 +83,7 @@ class OnboardingScreen extends StatelessWidget {
                   // SizedBox.fromSize(size: const Size(0, 10)),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 8, right: 24, bottom: 8, left: 24),
+                        top: 8, right: 24, bottom: 0, left: 24),
                     child: SignupButton(
                       text: AppTxt.onboardingSignUp,
                       onPressed: () => Navigator.push(

@@ -1,11 +1,35 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movieapp/model/film/film.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_images.dart';
 import 'package:movieapp/utils/app_txt.dart';
 
-class HomePages extends StatelessWidget {
+class HomePages extends StatefulWidget {
   const HomePages({super.key});
+
+  @override
+  State<HomePages> createState() => _HomePagesState();
+}
+
+class _HomePagesState extends State<HomePages> {
+  final dio = Dio();
+
+  /// Request Logic
+  void getHttp() async {
+    final response = await dio.get('https://freetestapi.com/api/v1/movies');
+    // from Molder
+    final data = Film.fromMap(response.data as List);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('initState');
+    getHttp();
+    print('initState Finishh');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +63,13 @@ class HomePages extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox.fromSize(size: Size(0, 20),),
+                  SizedBox.fromSize(
+                    size: Size(0, 20),
+                  ),
                   _buildMovieList(movieImages),
-                  SizedBox.fromSize(size: Size(0, 20),),
+                  SizedBox.fromSize(
+                    size: Size(0, 20),
+                  ),
                   Text(
                     AppTxt.movieSubTitle,
                     style: GoogleFonts.inter(
@@ -67,7 +95,6 @@ class HomePages extends StatelessWidget {
       width: size.width,
     );
   }
-}
 
   Widget _buildMovieList(List<String> movieImages) {
     return SizedBox(
@@ -77,7 +104,8 @@ class HomePages extends StatelessWidget {
         itemCount: movieImages.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(top: 12, left: 5, right: 5, bottom: 18),
+            padding:
+                const EdgeInsets.only(top: 12, left: 5, right: 5, bottom: 18),
             child: Image.asset(
               movieImages[index],
               width: 120,
@@ -89,3 +117,4 @@ class HomePages extends StatelessWidget {
       ),
     );
   }
+}
