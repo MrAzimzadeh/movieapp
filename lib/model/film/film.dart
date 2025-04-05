@@ -3,7 +3,7 @@ class Film {
   String description;
   String photoUrl;
   double rating;
-  String releaseDate;
+  String releaseDate; 
   List<String> genre;
   String director;
 
@@ -25,8 +25,9 @@ class Film {
       photoUrl: map['poster'],
       rating: map['rating'].toDouble(),
       releaseDate: map['year'].toString(),
-      genre:  List<String>.from(map['genre']),
+      genre: List<String>.from(map['genre']),
       director: map['director'],
     );
   }
+
 }

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/model/film/film.dart';
 import 'package:movieapp/utils/app_colors.dart';
@@ -15,30 +16,38 @@ class HomePages extends StatefulWidget {
 
 class _HomePagesState extends State<HomePages> {
   final dio = Dio();
+  late Future<List<Film>>? films;
+  final List<String> movieImages = [
+    AppImages.movie1,
+    AppImages.movie2,
+    AppImages.movie3
+  ];
 
   /// Request Logic
-  void getHttp() async {
-    final response = await dio.get('https://freetestapi.com/api/v1/movies');
-    // from Molder
-    final data = Film.fromMap(response.data as List);
+  Future<List<Film>> getHttp() async {
+    try {
+      final response = await dio.get('https://freetestapi.com/api/v1/movies');
+      // from Molder
+      List<Film> result =
+          (response.data as List).map((e) => Film.fromMap(e)).toList();
+
+      return result;
+    } catch (e) {
+      throw Exception('Server Error');
+    }
   }
 
   @override
   void initState() {
     super.initState();
     print('initState');
-    getHttp();
+    films = getHttp();
     print('initState Finishh');
   }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final List<String> movieImages = [
-      AppImages.movie1,
-      AppImages.movie2,
-      AppImages.movie3
-    ];
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -66,7 +75,47 @@ class _HomePagesState extends State<HomePages> {
                   SizedBox.fromSize(
                     size: Size(0, 20),
                   ),
-                  _buildMovieList(movieImages),
+
+                  /// Future Builder
+                  FutureBuilder<List<Film>>(
+                      future: films,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                              child: SizedBox(
+                                  width: 100,
+                                  height: 100,
+                                  child: CircularProgressIndicator.adaptive(
+                                    backgroundColor: Colors.amber,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.red,
+                                    ),
+                                  )));
+                        } else if (snapshot.hasError) {
+                          Fluttertoast.showToast(
+                            msg: 'Server Error',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                          return Center(
+                            child: Text(
+                              '${snapshot.error}',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          );
+                        } else if (snapshot.connectionState ==
+                            ConnectionState.done) {
+                          return _buildMovieList(snapshot.data!);
+                        } else {
+                          return SizedBox.shrink();
+                        }
+                      }),
+
+                  ///
                   SizedBox.fromSize(
                     size: Size(0, 20),
                   ),
@@ -78,7 +127,7 @@ class _HomePagesState extends State<HomePages> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  _buildMovieList(movieImages),
+                  // _buildMovieList(films),
                 ],
               ),
             ),
@@ -96,18 +145,19 @@ class _HomePagesState extends State<HomePages> {
     );
   }
 
-  Widget _buildMovieList(List<String> movieImages) {
+  Widget _buildMovieList(List<Film> films) {
     return SizedBox(
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: movieImages.length,
+        itemCount: films.length,
         itemBuilder: (context, index) {
+          var data = films[index];
           return Padding(
             padding:
                 const EdgeInsets.only(top: 12, left: 5, right: 5, bottom: 18),
-            child: Image.asset(
-              movieImages[index],
+            child: Image.network(
+              data.photoUrl,
               width: 120,
               fit: BoxFit.cover,
               key: ValueKey(index),
