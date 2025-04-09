@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movieapp/utils/app_icons.dart';
+import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_images.dart';
-import 'package:movieapp/utils/app_txt.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -11,88 +10,90 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 17),
-              child: Text(
-                AppTxt.settingsTitle,
-                style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w700, fontSize: 18),
-              ),
-            ),
-
-            // User
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox.fromSize(size: Size(0, 20),),
+              Row(
                 children: [
-                  // Image
-                  Image.asset(AppImages.appLogo),
-
-                  SizedBox.fromSize(
-                    size: Size(10, 0),
+                  Container(
+                    width: 90,
+                    height: 90,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(AppImages.profileImg),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppTxt.userText1,
-                        style: GoogleFonts.inter(
-                            fontSize: 18, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        AppTxt.userText2,
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
+              SizedBox.fromSize(size: Size(0, 20),),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10, top: 27.5
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Zeta',
+                          style: GoogleFonts.inter(
+                            color: AppColors.textColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
-                  )
+                        Text(
+                          'example@gmail.com',
+                          style: GoogleFonts.inter(
+                            color: AppColors.movieText,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
-
-            // Tiles
-
-            _buildTile(
-                title: AppTxt.settingsTitle1, icon: AppIcons.settingsIcon1),
-            _buildTile(
-                title: AppTxt.settingsTitle2, icon: AppIcons.settingsIcon2),
-            _buildTile(
-                title: AppTxt.settingsTitle3, icon: AppIcons.settingsIcon3),
-            _buildTile(
-                title: AppTxt.settingsTitle4, icon: AppIcons.settingsIcon4),
-            _buildTile(
-                title: AppTxt.settingsTitle5, icon: AppIcons.settingsIcon5),
-            _buildTile(
-                title: AppTxt.settingsTitle6, icon: AppIcons.settingsIcon6),
-            _buildTile(
-                title: AppTxt.settingsTitle7, icon: AppIcons.settingsIcon7),
-          ],
+               SizedBox.fromSize(size: Size(0, 30),),
+              _buildMenuItem(Icons.person_outline, 'Account'),
+              _buildMenuItem(Icons.lock_outline, 'Privacy'),
+              _buildMenuItem(Icons.play_circle_outline, 'Appearance'),
+              _buildMenuItem(Icons.notifications_outlined, 'Notifications'),
+              _buildMenuItem(Icons.storage_outlined, 'Storage'),
+              _buildMenuItem(Icons.accessibility_new_outlined, 'Accessibility'),
+              _buildMenuItem(Icons.help_outline, 'Help'),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 
-  Padding _buildTile({required String title, required Icon icon}) {
+  Widget _buildMenuItem(IconData icon, String title) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Row(
-          children: [
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Icon(
             icon,
-            SizedBox.fromSize(
-              size: Size(10, 0),
+            color: AppColors.inputField,
+            size: 24,
+          ),
+          const SizedBox(width: 20),
+          Text(
+            title,
+            style: GoogleFonts.inter(
+              color: AppColors.inputField,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
             ),
-            Text(
-              title,
-              style:
-                  GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w600),
-            )
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

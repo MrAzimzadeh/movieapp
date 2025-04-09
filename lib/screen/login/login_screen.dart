@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/screen/onboarding/onboarding_screen.dart';
+import 'package:movieapp/screen/signup/signup_screen.dart';
+import 'package:movieapp/utils/app_button.dart';
 import 'package:movieapp/utils/app_colors.dart';
-import 'package:movieapp/utils/app_icons.dart';
+import 'package:movieapp/utils/app_form_field.dart';
 import 'package:movieapp/utils/app_txt.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -11,148 +13,121 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        // Title
-        Text(
-          AppTxt.loginTitle,
-          style: GoogleFonts.inter(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color: AppColors.titleColor),
-        ),
-
-        SizedBox.fromSize(
-          size: Size(0, 30),
-        ),
-
-        // Container
-        Container(
-          width: 360,
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 29),
-          child: Column(children: [
-            _buildTextFormField(
-                hintText: AppTxt.loginHintTextField1,
-                prefixIcon: AppIcons.prefixIcon1),
-            SizedBox.fromSize(
-              size: Size(0, 38),
-            ),
-
-            // Password
-            _buildTextFormField(
-                hintText: AppTxt.loginHintTextField2,
-                prefixIcon: AppIcons.prefixIcon2,
-                suffixIcon: AppIcons.suffixIcon,
-                helperText: AppTxt.helperText),
-
-            SizedBox.fromSize(
-              size: Size(0, 20),
-            ),
-
-            _buildOnboardingButton(
-                text: AppTxt.onboardingLoginText,
-                buttonColor: AppColors.buttonColor1,
-                textColor: AppColors.buttonTextColor1,
-                borderColor: Colors.transparent,
-                borderWidth: 0,
-                onTap: () => Navigator.push(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18, right: 18),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  AppTxt.loginTitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textColor,
+                  ),
+                ),
+              ),
+              SizedBox.fromSize(
+                size: Size(0, 50),
+              ),
+              Column(
+                children: [
+                  SignupFormField(
+                    hintText: 'example@gmail.com',
+                    labelText: 'Email',
+                    prefixIcon: Icon(
+                      Icons.mail,
+                      color: AppColors.emailText,
+                    ),
+                  ),
+                  SizedBox.fromSize(
+                    size: Size(0, 20),
+                  ),
+                  SignupFormField(
+                    hintText: 'Password',
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: AppColors.usernameText,
+                    ),
+                    suffixIcon: Icon(
+                      Icons.visibility,
+                      color: AppColors.usernameText,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Inactive',
+                        style: GoogleFonts.roboto(
+                          color: AppColors.textColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox.fromSize(
+                size: Size(0, 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 8, right: 24, bottom: 8, left: 24),
+                child: AppButton(
+                  text: AppTxt.signupBtn,
+                  onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OnboardingScreen()))),
-
-            SizedBox.fromSize(
-              size: Size(0, 20),
-            ),
-
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: AppTxt.loginRichText1,
-                  style: GoogleFonts.inter(
+                      builder: (context) => OnboardingScreen(),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox.fromSize(
+                size: Size(0, 20),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Haven’t made an account?',
+                    style: GoogleFonts.inter(
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.richTextColor1)),
-              TextSpan(
-                  text: AppTxt.loginRichText2,
-                  style: GoogleFonts.inter(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.richTextColor2))
-            ]))
-          ]),
-        )
-      ])),
-    );
-  }
-
-  GestureDetector _buildOnboardingButton(
-      {required String text,
-      required Color buttonColor,
-      required Color textColor,
-      required Color borderColor,
-      required double borderWidth,
-      required void Function()? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 328,
-        height: 52,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-        decoration: BoxDecoration(
-            color: buttonColor,
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: borderColor, width: borderWidth)),
-        child: Center(
-          child: Text(
-            text,
-            style: GoogleFonts.inter(
-                color: textColor, fontSize: 14, fontWeight: FontWeight.w700),
+                      color: AppColors.textColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpScreen(),
+                        ),
+                      );
+                    },
+                    child: Text('Sign Up',
+                        style: GoogleFonts.inter(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.loginBtn,
+                        )),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-
-  TextFormField _buildTextFormField(
-      {required String hintText,
-      required Icon prefixIcon,
-      Icon? suffixIcon,
-      String? helperText}) {
-    return TextFormField(
-      style: GoogleFonts.roboto(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: AppColors.textColor,
-      ),
-      cursorColor: AppColors.cursorColor,
-      cursorHeight: 14,
-      cursorWidth: 1,
-      decoration: InputDecoration(
-        labelText: hintText,
-        labelStyle: GoogleFonts.roboto(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: AppColors.textColor,
-        ),
-        helperText: helperText,
-        helperStyle: GoogleFonts.roboto(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: AppColors.helperTextColor),
-        prefixIcon: prefixIcon,
-        prefixIconColor: AppColors.prefixIconColor,
-        suffixIcon: suffixIcon,
-        suffixIconColor: AppColors.suffixIconColor,
-        enabledBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.disabledBorderColor, width: 1),
-          borderRadius: BorderRadius.circular(2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.borderColor, width: 1),
-          borderRadius: BorderRadius.circular(2),
-        ),
-      ),
-    );
-  }
-}
+}  
