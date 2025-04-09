@@ -75,11 +75,7 @@ class OnboardingScreen extends StatelessWidget {
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-<<<<<<< HEAD
-                          builder: (context) => SignUpScreen(),
-=======
                           builder: (context) => LoginScreen(),
->>>>>>> 0344072cd53f007d0aaab9360e967a7b6acb6570
                         ),
                       ),
                     ),

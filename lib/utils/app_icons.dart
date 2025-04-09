@@ -7,24 +7,23 @@ class AppIcons {
   static const Icon prefixIcon1 = Icon(
     Icons.mail,
     size: 30,
-    color: AppColors.prefixIconColor,
+    color: AppColors.emailText,
   );
 
   static const Icon prefixIcon2 = Icon(
     Icons.lock,
     size: 30,
-    color: AppColors.prefixIconColor,
+    color: AppColors.emailText,
   );
 
   static const Icon suffixIcon = Icon(
     Icons.remove_red_eye,
     size: 24,
-    color: AppColors.suffixIconColor,
+    color: AppColors.loginBtn,
   );
 
   static const Icon searchPrefix =
-      Icon(Icons.list, size: 30, color: AppColors.prefixIconColor);
-
+      Icon(Icons.list, size: 30, color: AppColors.inputField);
 
   // SettingsPage
   static const Icon settingsIcon1 = Icon(Icons.person);

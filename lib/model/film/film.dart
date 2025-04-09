@@ -1,13 +1,15 @@
 class Film {
+  int id;
   String title;
   String description;
   String photoUrl;
   double rating;
-  String releaseDate; 
+  String releaseDate;
   List<String> genre;
   String director;
 
   Film({
+    required this.id,
     required this.title,
     required this.description,
     required this.photoUrl,
@@ -20,6 +22,7 @@ class Film {
   /// From  Map
   factory Film.fromMap(Map<String, dynamic> map) {
     return Film(
+      id: map['id'],
       title: map['title'],
       description: map['plot'],
       photoUrl: map['poster'],
@@ -29,5 +32,4 @@ class Film {
       director: map['director'],
     );
   }
-
 }

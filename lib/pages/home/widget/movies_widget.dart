@@ -6,23 +6,29 @@ import 'package:movieapp/pages/home/widget/movie_item.dart';
 
 /// Todo @GularaGulmammadova @ElmarSalimov
 class MoviesWidget extends StatelessWidget {
-  MoviesWidget({
-    super.key,
-    this.films,
-    required this.url,
-  });
+  MoviesWidget({super.key, this.films, required this.url, this.limit});
   final String? url;
+  final int? limit;
+
+  /// Api Sorgulari ucun
   final dio = Dio();
 
+  /// Api Sorgularindan gelecek data
   Future<List<Film>>? films;
 
   /// Request Logic
+  /// Api sorgusu ucun istifade olunur
+  /// [url] - API url
+  /// [getHttp] - API sorgusu
+  /// fUTURE Return Edir
   Future<List<Film>> getHttp() async {
     try {
-      final response = await dio.get('https://freetestapi.com/api/v1/$url');
+      final response = await dio.get('https://freetestapi.com/api/v1/$url',
+          queryParameters: {'limit': limit});
       // from Molder
       List<Film> result =
           (response.data as List).map((e) => Film.fromMap(e)).toList();
+
       return result;
     } catch (e) {
       throw Exception('Server Error');

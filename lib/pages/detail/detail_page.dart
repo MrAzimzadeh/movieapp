@@ -1,154 +1,215 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movieapp/model/film/film.dart';
 import 'package:movieapp/utils/app_colors.dart';
 import 'package:movieapp/utils/app_images.dart';
 
 class MovieDetailPage extends StatelessWidget {
-  const MovieDetailPage({super.key});
+  MovieDetailPage({super.key, required this.filmId});
+  final int filmId;
+
+  Future<Film>? film;
+
+  Future<Film> getFilmById() async {
+    final dio = Dio();
+    final response =
+        await dio.get('https://freetestapi.com/api/v1/movies/$filmId');
+
+    print(response.data);
+    return Film.fromMap(response.data);
+  }
 
   @override
   Widget build(BuildContext context) {
-  //  final Size size = MediaQuery.of(context).size;
+    film = getFilmById();
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Align(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //  _buildHomeImage(size),
-                Padding(
-                  padding: const EdgeInsets.only(
-                  right: 75,  top: 17, bottom: 17,
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.arrow_back, color: AppColors.inputField),
-                        onPressed: () => Navigator.pop(context),
+        child: FutureBuilder<Film>(
+            future: film,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: CircularProgressIndicator.adaptive(
+                      backgroundColor: Colors.amber,
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Colors.red,
                       ),
-                      const SizedBox(width: 10),
-                      Text(
-                        'The Glory',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(AppImages.posterBg),
-                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10, top: 10, bottom: 10,
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text(
+                    'Server Error',
+                    style: GoogleFonts.inter(
+                      color: AppColors.textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'The Glory',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
+                );
+              } else if (snapshot.connectionState == ConnectionState.done &&
+                  snapshot.hasData) {
+                return SingleChildScrollView(
+                  child: Align(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //  _buildHomeImage(size),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 75,
+                            top: 17,
+                            bottom: 17,
+                          ),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.arrow_back,
+                                    color: AppColors.inputField),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                snapshot.data?.title ?? 'Film',
+                                style: GoogleFonts.inter(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '2022 | 18+ | 1 Season | K-Drama',
-                        style: GoogleFonts.inter(
-                          color: AppColors.movieText,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                        Container(
+                          height: 200,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image:
+                                  NetworkImage(snapshot.data?.photoUrl ?? ''),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'A young woman, bullied to the point of deciding to drop out of school, '
-                        'plans the best way to get revenge. After becoming a primary school teacher, '
-                        'she takes in the son of the man who tormented her the most to enact her vengeance.',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            top: 10,
+                            bottom: 10,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${snapshot.data?.title}',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                '2022 | 18+ | 1 Season | K-Drama',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.movieText,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                '${snapshot.data?.description}',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'Starring : Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                'Creators : Kim Eun-sook, An Gil-ho',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                'Genre : ${snapshot.data?.genre.join(', ')}',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                'Episodes',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                'Season 1',
+                                style: GoogleFonts.inter(
+                                  color: AppColors.textColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              _buildEpisodeCard(
+                                imagePath: AppImages.episode,
+                                title: 'Episode 1',
+                                duration: '47m',
+                                description:
+                                    'Tormented by her high school classmates and with nowhere...',
+                              ),
+                              _buildEpisodeCard(
+                                imagePath: AppImages.episode,
+                                title: 'Episode 2',
+                                duration: '52m',
+                                description:
+                                    'With Park Yeon-jin\'s wedding on...',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Starring : Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        'Creators : Kim Eun-sook, An Gil-ho',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        'Genre : Revenge, Psychological Thriller',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        'Episodes',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        'Season 1',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      _buildEpisodeCard(
-                        imagePath: AppImages.episode,
-                        title: 'Episode 1',
-                        duration: '47m',
-                        description:
-                            'Tormented by her high school classmates and with nowhere...',
-                      ),
-                      _buildEpisodeCard(
-                        imagePath: AppImages.episode,
-                        title: 'Episode 2',
-                        duration: '52m',
-                        description: 'With Park Yeon-jin\'s wedding on...',
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
+                );
+              } else {
+                return Center(
+                  child: Text(
+                    'No Data',
+                    style: GoogleFonts.inter(
+                      color: AppColors.textColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                );
+              }
+            }),
       ),
     );
   }

@@ -98,17 +98,17 @@ class FavouritesPage extends StatelessWidget {
                     width: 88,
                     height: 22,
                     decoration: BoxDecoration(
-                        color: AppColors.containerColor,
+                        color: AppColors.downloadColor,
                         borderRadius: BorderRadius.circular(4),
                         border: Border.all(
-                            color: AppColors.containerBorderColor, width: 1)),
+                            color: AppColors.downloadColor, width: 1)),
                     child: Center(
                       child: Text(
                         AppTxt.favButtonTitle,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 12,
-                          color: AppColors.containerBorderColor,
+                          color: AppColors.downloadColor,
                         ),
                       ),
                     ),

@@ -28,7 +28,6 @@ class AppTxt {
   static const String onboardingSignUpText = "Sign Up";
 
   // LoginScreen
-  static const String loginTitle = "Login";
   static const String loginRichText1 = "Haven’t made an account? ";
   static const String loginRichText2 = "Sign Up";
   static const String loginHintTextField1 = "Email";
@@ -36,14 +35,12 @@ class AppTxt {
   static const String helperText = "Inactive";
 
   // SearchPage
-  static const String searchTitle = "Search";
   static const String searchHintText = "Search for a title...";
 
   // FavouritesPage
   static const String favTitle = "Favourites";
 
   static const String movieName1 = "Warriors";
-  static const String movieName2 = "The Glory";
 
   static const String movieDate1 = "2019";
   static const String movieDate2 = "2022";
