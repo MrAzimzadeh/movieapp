@@ -20,7 +20,7 @@ class _HomePagesState extends State<HomePages> {
   void initState() {
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -56,7 +56,7 @@ class _HomePagesState extends State<HomePages> {
                     size: Size(0, 20),
                   ),
                   Text(
-                    AppTxt.movieSubTitle,
+                    AppTxt.movieSubTitle, 
                     style: GoogleFonts.inter(
                       color: AppColors.textColor,
                       fontSize: 20,
