@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movieapp/pages/favorites_page.dart';
+import 'package:movieapp/pages/favorites/favorites_page.dart';
 import 'package:movieapp/pages/home/home_pages.dart';
-import 'package:movieapp/pages/search_page.dart';
-import 'package:movieapp/pages/settings_page.dart';
+import 'package:movieapp/pages/search/search_page.dart';
+import 'package:movieapp/pages/settings/settings_page.dart';
 import 'package:movieapp/utils/app_colors.dart';
 
 class MainWrapper extends StatefulWidget {

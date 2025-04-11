@@ -56,45 +56,8 @@ class FavoritesPage extends StatelessWidget {
                   favoriteMovies[index]['year']!,
                 );
               },
-            ))
-            //  GridView.count(
-            //   crossAxisCount: 3,
-            //   children: List.generate(3, (index){
-            //         return  Center(
-            //           child: Text(AppTxt.movieName,),
-            //         );
-            //     })
-            //   ),
-
-            //    Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: [
-            //       Padding(
-            //         padding: const EdgeInsets.only(
-            //           left: 20, right: 10, top: 5, bottom: 5,
-            //         ),
-            //         child: Image.asset(
-            //           AppImages.moviePoster,
-            //           fit: BoxFit.cover,
-            //           width: 60,
-            //         ),
-            //       ),
-            //       Padding(
-            //         padding: const EdgeInsets.only(
-            //         bottom: 60, left: 10
-            //         ),
-            //         child: Text(AppTxt.movieName,
-            //         style: GoogleFonts.inter(
-            //         color: AppColors.textColor,
-            //         fontSize: 16,
-            //         fontWeight: FontWeight.w700,-
-
-            //         ),
-            //         ),
-            //       ),
-            //     ],
-            //    )
-            // ],
+            ),
+            )
           ],
         ),
       ),
